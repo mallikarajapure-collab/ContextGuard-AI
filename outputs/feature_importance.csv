@@ -1,0 +1,16 @@
+feature,importance
+break_minutes,0.322872001790883
+duration_minutes,0.3024998076869458
+context_switch,0.06206421225858732
+task_status_incomplete,0.05779965752982778
+task_status_completed,0.03985069732097839
+project_ML Project,0.02464807475446021
+project_College Project,0.024213247597577373
+activity_type_research,0.0230477215840291
+project_Portfolio Website,0.02272466099201074
+task_status_in_progress,0.022659667248621167
+project_AI Chatbot,0.02232414881178757
+activity_type_coding,0.020611739281289617
+activity_type_debugging,0.019052825381127386
+activity_type_documentation,0.018094636523605448
+activity_type_testing,0.017536901238269228
