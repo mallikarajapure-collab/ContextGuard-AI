@@ -1,3 +1,11 @@
+<div align="center">
+
+<img src="https://capsule-render.vercel.app/api?type=waving&color=0:064E3B,50:059669,100:5EEAD4&height=210&section=header&text=CONTEXTGUARD%20AI&fontSize=40&fontColor=FFFFFF&fontAlignY=38&desc=Developer%20Context%20Loss%20Prediction&descAlignY=60&descSize=15" width="100%" />
+
+</div>
+
+---
+
 # 🧠 ContextGuard AI
 
 ### Developer Context Loss Prediction System
