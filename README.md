@@ -1,103 +1,120 @@
 <div align="center">
 
-<img src="https://capsule-render.vercel.app/api?type=waving&color=0:064E3B,50:059669,100:5EEAD4&height=210&section=header&text=CONTEXTGUARD%20AI&fontSize=40&fontColor=FFFFFF&fontAlignY=38&desc=Developer%20Context%20Loss%20Prediction&descAlignY=60&descSize=15" width="100%" />
+<img src="https://capsule-render.vercel.app/api?type=waving&color=0:022C22,35:047857,70:0D9488,100:99F6E4&height=235&section=header&text=CONTEXTGUARD%20AI&fontSize=42&fontColor=ECFDF5&fontAlignY=36&desc=Protect%20the%20flow%20of%20development&descAlignY=60&descSize=16" width="100%" alt="ContextGuard AI — Protect the flow of development" />
+
+<p><strong>A machine-learning prototype for estimating developer context-loss risk.</strong></p>
+
+<p>
+  <img src="https://img.shields.io/badge/Python-064E3B?style=for-the-badge&logo=python&logoColor=99F6E4" alt="Python" />
+  <img src="https://img.shields.io/badge/scikit--learn-047857?style=for-the-badge&logo=scikitlearn&logoColor=white" alt="scikit-learn" />
+  <img src="https://img.shields.io/badge/Streamlit-0F766E?style=for-the-badge&logo=streamlit&logoColor=white" alt="Streamlit" />
+  <img src="https://img.shields.io/badge/Model%20Evaluation-14B8A6?style=for-the-badge&logoColor=white" alt="Model evaluation" />
+</p>
 
 </div>
 
 ---
 
-# 🧠 ContextGuard AI
+## 🌿 Overview
 
-### Developer Context Loss Prediction System
+**ContextGuard AI** explores whether developer activity patterns can help estimate the risk of losing track of a task or its surrounding context. The project turns activity-related inputs—such as break and work-session duration, task status, and recent project switching—into a model score, a risk category, behavioral signals, and suggested recovery steps.
 
-ContextGuard AI is a Machine Learning-based system that predicts the **risk of a developer losing development context** based on activity patterns such as break duration, activity duration, project switching, task status, and recent development behavior.
+It combines a trained scikit-learn classifier with a Streamlit interface, feature-engineering scripts, model-evaluation outputs, and saved model artifacts.
 
-The system analyzes developer activity and provides a **context-loss probability, risk level, behavioral signals, and recommendations** through an interactive Streamlit dashboard.
+> **Important:** This is an experimental decision-support prototype, not a clinical or psychological assessment and not a validated measure of developer productivity. Its predictions depend on the dataset and features used during development.
 
----
+## ✨ What it includes
 
-## 🚀 Features
+<table>
+<tr>
+<td width="50%" valign="top">
 
-* 🧠 Machine Learning-based context-loss prediction
-* 📊 Context-loss probability score
-* 🚨 Low / Medium / High risk classification
-* 🔎 Developer behavior signal detection
-* 🔄 Project-switch detection
-* ⏱️ Activity and break duration analysis
-* 📈 Feature importance visualization
-* ⚖️ Logistic Regression vs Random Forest comparison
-* 🎯 Confusion matrix analysis
-* 💡 Context recovery recommendations
-* 🖥️ Interactive Streamlit dashboard
+### 🧭 Context-risk overview
+- Estimate context-loss probability from the entered activity profile.
+- Map the score to a risk category using the configured threshold.
+- Surface activity patterns that may deserve a closer look.
 
----
+</td>
+<td width="50%" valign="top">
 
-## 🛠️ Tech Stack
+### 🔎 Activity signals
+- Consider break and activity duration.
+- Include task completion status.
+- Account for recent project switching and related encoded features.
+- Present suggestions for regaining task context.
 
-* **Python**
-* **Pandas**
-* **NumPy**
-* **Scikit-learn**
-* **Joblib**
-* **Streamlit**
-* **Jupyter Notebook**
+</td>
+</tr>
+<tr>
+<td width="50%" valign="top">
 
----
+### 📊 Model evaluation
+- Compare Logistic Regression and Random Forest.
+- Review precision, recall, F1 score, and accuracy.
+- Explore feature-importance and confusion-matrix views.
+- Keep evaluation outputs alongside the project.
 
-## 🤖 Machine Learning
+</td>
+<td width="50%" valign="top">
 
-Two classification models were evaluated:
+### 🧪 ML workflow
+- Explore and prepare the activity dataset.
+- Engineer and encode model features.
+- Train candidate classifiers and tune the decision threshold.
+- Load the saved model artifacts in the application.
 
-| Model               | Accuracy | Precision | Recall | F1 Score |
-| ------------------- | -------: | --------: | -----: | -------: |
-| Logistic Regression |   65.50% |    59.43% | 39.87% |   47.73% |
-| Random Forest       |   64.25% |    57.28% | 37.34% |   45.21% |
+</td>
+</tr>
+</table>
 
-### Final Model
+## 🧠 Model results
 
-**Logistic Regression** was selected as the final model because it achieved the highest F1 score among the evaluated models.
+The repository's reported evaluation compares two classifiers on a test set of 400 samples.
 
----
+| Model | Accuracy | Precision | Recall | F1 score |
+|---|---:|---:|---:|---:|
+| Logistic Regression | 65.50% | 59.43% | 39.87% | 47.73% |
+| Random Forest | 64.25% | 57.28% | 37.34% | 45.21% |
 
-## 📊 Important Features
+**Selected model:** Logistic Regression, based on the higher F1 score among these evaluated candidates.
 
-The most influential behavioral features included:
+The project reports 1,600 training samples and 400 testing samples (2,000 total), with a tuned classification threshold of **0.30** in the final prediction setup.
 
-1. Break duration
-2. Activity duration
-3. Recent project switching
-4. Unfinished task status
-5. In-progress task status
-6. Context switching
-7. Same-project activity
+These are project-reported results, not a guarantee of real-world performance. In particular, performance on generated or limited development data may not transfer to real developer workflows; validation on representative, independently collected data would be needed before relying on predictions.
 
-These signals help the system estimate the likelihood of context loss.
-
----
-
-## 🔄 How It Works
+## 🔄 How the pipeline works
 
 ```text
-Developer Activity
-        ↓
-Feature Engineering
-        ↓
-One-Hot Encoding
-        ↓
-Machine Learning Model
-        ↓
-Context Loss Probability
-        ↓
-Risk Classification
-        ↓
-Behavior Signals
-        ↓
-Recommendation
+Developer activity inputs
+          |
+          v
+Feature engineering and encoding
+          |
+          v
+Saved Logistic Regression model
+          |
+          v
+Estimated context-loss probability
+          |
+          v
+Threshold-based risk category
+          |
+          v
+Behavioral signals and recovery suggestions
 ```
 
----
+## 🧰 Technology stack
 
-## 🖥️ Running the Project Locally
+| Technology | Purpose |
+|---|---|
+| Python | Application and ML workflow |
+| Pandas, NumPy | Data preparation and numerical operations |
+| scikit-learn | Feature processing, classification, and evaluation |
+| Joblib | Saving and loading model artifacts |
+| Streamlit | Interactive dashboard |
+| Jupyter Notebook | Exploratory data analysis |
+
+## 🚀 Run locally
 
 ### 1. Clone the repository
 
@@ -106,64 +123,56 @@ git clone https://github.com/mallikarajapure-collab/ContextGuard-AI.git
 cd ContextGuard-AI
 ```
 
-### 2. Create a virtual environment
+### 2. Create and activate a virtual environment
 
-```bash
-python -m venv venv
-```
-
-### 3. Activate the environment
-
-**Windows PowerShell:**
-
+**Windows PowerShell**
 ```powershell
-venv\Scripts\Activate.ps1
+python -m venv venv
+.\venv\Scripts\Activate.ps1
 ```
 
-### 4. Install dependencies
+**macOS / Linux**
+```bash
+python3 -m venv venv
+source venv/bin/activate
+```
+
+### 3. Install dependencies
 
 ```bash
 pip install -r requirements.txt
 ```
 
-### 5. Run the Streamlit application
+### 4. Launch the dashboard
 
 ```bash
 python -m streamlit run app.py
 ```
 
-The application will open in your browser.
+Open the local URL printed by Streamlit in your browser. The repository includes saved model artifacts under `models/`, which the application can use for predictions.
 
----
-
-## 📁 Project Structure
+## 🗂️ Project structure
 
 ```text
 ContextGuard-AI/
-│
 ├── app.py
 ├── main.py
 ├── requirements.txt
-│
 ├── data/
 │   ├── developer_activity.csv
 │   ├── improved_developer_activity.csv
 │   └── processed_developer_activity.csv
-│
 ├── models/
 │   ├── context_loss_model.pkl
 │   ├── feature_names.pkl
 │   └── threshold.pkl
-│
 ├── notebooks/
 │   └── 01_data_exploration.ipynb
-│
 ├── outputs/
 │   ├── feature_importance.csv
 │   ├── final_feature_importance.csv
 │   ├── final_model_comparison.csv
 │   └── threshold_results.csv
-│
 └── src/
     ├── explore_data.py
     ├── feature_engineering.py
@@ -175,58 +184,29 @@ ContextGuard-AI/
     └── tune_threshold.py
 ```
 
----
+## ⚠️ Scope and responsible use
 
-## 🎯 Example
+- A risk score is an estimate from the trained model, not proof that someone has lost context.
+- Long breaks, project switching, or unfinished tasks can have many legitimate explanations; avoid using these signals to judge an individual.
+- Reported metrics reflect the evaluation setup documented in this repository and may change with data, preprocessing, or threshold changes.
+- The current project does not provide live IDE tracking or a VS Code extension. Those are possible future additions, not current features.
+- Keep the environment, input data, and model artifacts aligned when retraining or changing feature engineering.
 
-A developer provides:
+## 🛣️ Potential next steps
 
-* Project: ML Project
-* Activity: Debugging
-* Task: Incomplete
-* Activity Duration: 75 minutes
-* Break Duration: 75 minutes
-* Recent Project Switch: Yes
+- Validate with larger, diverse, and representative activity data.
+- Add an opt-in VS Code integration for context-aware reminders.
+- Track user-controlled history and context-recovery outcomes.
+- Improve calibration and report uncertainty alongside risk scores.
+- Add repeatable automated tests for preprocessing and prediction.
 
-The system can identify behavioral signals such as:
+## 👩‍💻 Author
 
-* ⚠️ Very long break
-* ⚠️ Incomplete task
-* ⚠️ Project switch
-* ⚠️ Long activity session
+**Mallika Rajapure**  
+MCA Student · Machine Learning & Software Development
 
-and generate a context-loss risk prediction.
+<div align="center">
 
----
+**ContextGuard AI · Support the workflow, not surveillance.**
 
-## 🔬 Model Evaluation
-
-The final model was evaluated on a test set of **400 samples**.
-
-**Training samples:** 1600
-**Testing samples:** 400
-**Total dataset:** 2000 samples
-
-The classification threshold was tuned to **0.30** for the final prediction system.
-
----
-
-💡 Future Improvements
-
-* Real-time IDE activity tracking
-* VS Code extension integration
-* Developer productivity timeline
-* Historical context-loss tracking
-* Personalized recovery suggestions
-* Real-time notifications
-* Larger and more diverse datasets
-* Advanced ML and deep learning models
-
----
-
- 👩‍💻 Author
-
-**Mallika Rajapure**
-
-MCA Student | Aspiring AI & Software Developer
-⭐ If you find this project interesting, consider giving the repository a star!
+</div>
